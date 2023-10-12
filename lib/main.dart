@@ -96,7 +96,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                       decoration: BoxDecoration(
                         color: Colors.red,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                        border: Border.all(color: Colors.transparent),
                       ),
                     ),
                   ),
@@ -108,7 +108,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                       decoration: BoxDecoration(
                         color: Colors.deepOrangeAccent,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                        border: Border.all(color: Colors.transparent),
                       ),
                     ),
                   ),
@@ -120,7 +120,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                       decoration: BoxDecoration(
                         color: Colors.yellow,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                        border: Border.all(color: Colors.transparent),
                       ),
                     ),
                   ),
@@ -132,7 +132,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                       decoration: BoxDecoration(
                         color: Colors.blue,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                        border: Border.all(color: Colors.transparent),
                       ),
                     ),
                   ),
@@ -144,7 +144,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                       decoration: BoxDecoration(
                         color: Colors.black,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                        border: Border.all(color: Colors.transparent),
                       ),
                     ),
                   ),
@@ -157,7 +157,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                   return Container(
                     width: 300,
                     height: 300,
-                    decoration: BoxDecoration(border: Border.all(color: Colors.black)),// Set border color to transparent
+                    decoration: BoxDecoration(border: Border.all(color: Colors.black)),
                     child: AnimatedContainer(
                       duration: const Duration(seconds: 1),
                       curve: Curves.easeInOut,
@@ -167,7 +167,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: _ballColor, // Change ball color here
+                            color: _ballColor,
                             shape: BoxShape.circle,
                           ),
                         ),
