@@ -14,7 +14,6 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
 
   double _ballSpeed = 1.0;
   Color _ballColor = Colors.black;
-  bool _sliderStatus = true;
 
   @override
   void initState() {
@@ -36,20 +35,24 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
   void startBouncing() {
     setState(() {
       _controller.forward();
-      _sliderStatus = false;
     });
   }
 
   void pauseBouncing() {
     setState(() {
       _controller.stop();
-      _sliderStatus = true;
     });
   }
 
   void updateAnimationSpeed(double value) {
     _ballSpeed = value;
     _controller.duration = Duration(seconds: value.toInt());
+  }
+
+  void changeBallColor(Color color) {
+    setState(() {
+      _ballColor = color;
+    });
   }
 
   @override
@@ -64,7 +67,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Explicit Animation Demo'),
+          title: const Text('Ball Bouncing App'),
           backgroundColor: Colors.grey.shade700,
         ),
         backgroundColor: Colors.grey.shade300,
@@ -75,9 +78,10 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
               const Text(
                 "Change ball color",
                 style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 22,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
@@ -85,74 +89,64 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _ballColor = Colors.pink;
-                      });
-                    },
+                    onTap: () => changeBallColor(Colors.red),
                     child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          color: Colors.pink,
-                          shape: BoxShape.circle,
-                        )),
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                      ),
+                    ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _ballColor = Colors.lightBlue.shade400;
-                      });
-                    },
+                    onTap: () => changeBallColor(Colors.deepOrangeAccent),
                     child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          color: Colors.lightBlue,
-                          shape: BoxShape.circle,
-                        )),
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.deepOrangeAccent,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                      ),
+                    ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _ballColor = Colors.amber;
-                      });
-                    },
+                    onTap: () => changeBallColor(Colors.yellow),
                     child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          color: Colors.amber,
-                          shape: BoxShape.circle,
-                        )),
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                      ),
+                    ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _ballColor = Colors.green.shade400;
-                      });
-                    },
+                    onTap: () => changeBallColor(Colors.blue),
                     child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          color: Colors.green,
-                          shape: BoxShape.circle,
-                        )),
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                      ),
+                    ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _ballColor = Colors.red;
-                      });
-                    },
+                    onTap: () => changeBallColor(Colors.red),
                     child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        )),
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.transparent), // Set border color to transparent
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -163,8 +157,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                   return Container(
                     width: 300,
                     height: 300,
-                    decoration:
-                    BoxDecoration(border: Border.all(color: _ballColor)),
+                    decoration: BoxDecoration(border: Border.all(color: Colors.black)),// Set border color to transparent
                     child: AnimatedContainer(
                       duration: const Duration(seconds: 1),
                       curve: Curves.easeInOut,
@@ -174,7 +167,7 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: _ballColor,
+                            color: _ballColor, // Change ball color here
                             shape: BoxShape.circle,
                           ),
                         ),
@@ -190,13 +183,15 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                     onPressed: startBouncing,
                     child: const Text('Start'),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueGrey),
+                      backgroundColor: Colors.blueGrey,
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: pauseBouncing,
                     child: const Text('Stop'),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueGrey),
+                      backgroundColor: Colors.blueGrey,
+                    ),
                   ),
                 ],
               ),
@@ -205,28 +200,6 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
               ),
               const SizedBox(
                 height: 10,
-              ),
-              Text(
-                'Ball Speed: ${_ballSpeed.toInt()}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-              Slider(
-                value: _ballSpeed,
-                onChanged: !_sliderStatus
-                    ? null
-                    : (value) {
-                  setState(() {
-                    _ballSpeed = value;
-                  });
-                  updateAnimationSpeed(value);
-                },
-                min: 1.0,
-                max: 10.0,
-                activeColor: Colors.grey,
-                inactiveColor: Colors.white,
               ),
             ],
           ),
