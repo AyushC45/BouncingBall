@@ -137,12 +137,12 @@ class _ExplicitAnimationAppState extends State<ExplicitAnimationApp>
                     ),
                   ),
                   GestureDetector(
-                    onTap: () => changeBallColor(Colors.red),
+                    onTap: () => changeBallColor(Colors.black),
                     child: Container(
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: Colors.black,
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.transparent), // Set border color to transparent
                       ),
